@@ -5,6 +5,9 @@ on: # test any PRs
       - opened
     paths-ignore:
       - '**.md'
+  push:
+    branches:
+      - dev
   workflow_dispatch:
 
 jobs:
