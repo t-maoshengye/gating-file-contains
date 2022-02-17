@@ -42,7 +42,12 @@ function run() {
         try {
             const ms = core.getInput('milliseconds');
             const cm = core.getInput('commit_message');
-            core.info(`🎉 Commit Message: ${cm}`);
+            if (cm.includes('expect')) {
+                core.info(`❗ Expect`);
+            }
+            else {
+                core.info(`🎉 Commit: ${cm}`);
+            }
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));
