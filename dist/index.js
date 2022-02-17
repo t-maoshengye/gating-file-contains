@@ -42,8 +42,15 @@ function run() {
         try {
             const ms = core.getInput('milliseconds');
             const cm = core.getInput('commit_message');
-            if (cm.includes('no gating check')) {
+            const rt = core.getInput('request_title');
+            if (rt.includes('no gating check')) {
+                core.info(`✅ The PR title containing 'no gating check'`);
+            }
+            else if (cm.includes('no gating check')) {
                 core.info(`✅ The commit containing 'no gating check'`);
+            }
+            else if (rt) {
+                core.info(`📝 PR Title: ${rt}`);
             }
             else {
                 core.info(`📝 Commit: ${cm}`);

@@ -27,3 +27,4 @@ jobs:
         with:
           milliseconds: 1000
           commit_message: ${{ github.event.head_commit.message }}
+          request_title: ${{ github.event.pull_request.title }}

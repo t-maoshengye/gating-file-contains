@@ -5,11 +5,17 @@ async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
     const cm: string = core.getInput('commit_message')
-    if(cm.includes('no gating check')){
+    const rt: string = core.getInput('request_title')
+    if (rt.includes('no gating check')) {
+      core.info(`✅ The PR title containing 'no gating check'`)
+    } else if (cm.includes('no gating check')) {
       core.info(`✅ The commit containing 'no gating check'`)
-    }else{
+    } else if (rt) {
+      core.info(`📝 PR Title: ${rt}`)
+    } else {
       core.info(`📝 Commit: ${cm}`)
     }
+
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
     core.debug(new Date().toTimeString())
