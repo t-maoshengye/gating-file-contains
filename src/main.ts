@@ -5,10 +5,10 @@ async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
     const cm: string = core.getInput('commit_message')
-    if(cm.includes('expect')){
-      core.info(`❗ Expect`)
+    if(cm.includes('no gating check')){
+      core.info(`✅ The commit containing 'no gating check'`)
     }else{
-      core.info(`🎉 Commit: ${cm}`)
+      core.info(`📝 Commit: ${cm}`)
     }
     core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
 
