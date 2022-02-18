@@ -1,8 +1,7 @@
 name: 'PR-test'
 on: # test any PRs
   pull_request:
-    types:
-      - opened
+    types: [ opened, reopened ]
     paths-ignore:
       - '**.md'
   push:
