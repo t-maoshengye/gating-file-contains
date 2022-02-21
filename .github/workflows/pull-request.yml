@@ -1,7 +1,7 @@
 name: 'PR-test'
 on: # test any PRs
   pull_request:
-    types: [ opened, reopened ]
+    types: [ labeled ]
     paths-ignore:
       - '**.md'
   push:
@@ -27,3 +27,12 @@ jobs:
           milliseconds: 1000
           commit_message: ${{ github.event.head_commit.message }}
           request_title: ${{ github.event.pull_request.title }}
+
+  build:
+    if: ${{ github.event.label.name == 'bug' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo If Label is Bug!
