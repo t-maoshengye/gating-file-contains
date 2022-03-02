@@ -41,6 +41,20 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const ms = core.getInput('milliseconds');
+            const cm = core.getInput('commit_message');
+            const rt = core.getInput('request_title');
+            if (rt.includes('no gating check')) {
+                core.info(`✅ The PR title containing 'no gating check'`);
+            }
+            else if (cm.includes('no gating check')) {
+                core.info(`✅ The commit containing 'no gating check'`);
+            }
+            else if (rt) {
+                core.info(`📝 PR Title: ${rt}`);
+            }
+            else {
+                core.info(`📝 Commit: ${cm}`);
+            }
             core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
             yield (0, wait_1.wait)(parseInt(ms, 10));

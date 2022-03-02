@@ -6,6 +6,14 @@ inputs:
     required: true
     description: 'input description here'
     default: 'default value if applicable'
+  commit_message:
+    required: true
+    description: 'github.event.head_commit.message'
+    default: 'default value if applicable'
+  request_title:
+    required: true
+    description: 'github.event.pull_request.title'
+    default: 'default value if applicable'
 runs:
   using: 'node12'
   main: 'dist/index.js'
