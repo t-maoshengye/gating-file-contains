@@ -1,0 +1,12 @@
+name: Call a reusable workflow
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  call-workflow-passing-data:
+    uses: t-maoshengye/gating-file-contains/.github/workflows/reusable_workflow.yml@dev
+    with:
+      username: ye
